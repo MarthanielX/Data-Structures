@@ -1,0 +1,1 @@
+Runs the "Game of Sticks," where there are two players and a pile of sticks that the players remove 1,2, or 3 from on their turn. The last player to remove a stick loses. Options to play with anywhere from 10-100 sticks and play against another human, a niave AI, or a trained AI.
