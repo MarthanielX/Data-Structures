@@ -1,0 +1,20 @@
+Times each entry was added: 0
+Program runtime: 1.2687687762E10
+Times each entry was added: 1
+Program runtime: 1.53287085E10
+Times each entry was added: 2
+Program runtime: 1.5235121427E10
+Times each entry was added: 3
+Program runtime: 1.5230975739E10
+Times each entry was added: 4
+Program runtime: 1.5287438411E10
+Times each entry was added: 5
+Program runtime: 1.5271265602E10
+Times each entry was added: 6
+Program runtime: 1.5264371642E10
+Times each entry was added: 7
+Program runtime: 1.5552380456E10
+Times each entry was added: 8
+Program runtime: 1.5493551863E10
+Times each entry was added: 9
+Program runtime: 1.5660865269E10
