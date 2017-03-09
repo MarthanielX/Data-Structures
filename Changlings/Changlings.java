@@ -67,20 +67,29 @@ public class Changlings {
             }
          }
       }
-      // doesn't print original
+      Scanner keyboard = new Scanner(System.in);
+      while (!startNode.equals("XXXX") && !endNode.equals("XXXX")){
       if (!prevNodes.get(endNode).equals("null")){
          String currentNode = endNode;
-         Stack<String> stack = new Stack<String>();
+         //Stack<String> stack = new Stack<String>();
          while (!prevNodes.get(currentNode).equals("starting node")){
-            stack.push(currentNode);
+            System.out.println(currentNode);
+            //stack.push(currentNode);
             currentNode = prevNodes.get(currentNode);
          }
-         stack.push(startNode);
-         while (!stack.empty()) 
-            System.out.println(stack.pop());                  
+         System.out.println(startNode);
+         //stack.push(startNode);
+         //while (!stack.empty()) 
+         //   System.out.println(stack.pop());                  
       } 
       else {
          System.out.println("No solution found.");
+      }
+      System.out.println("\nEnter two words, or XXXX for both words to quit.");     
+      System.out.print("First Word: ");
+      startNode = keyboard.next();
+      System.out.print("Second Word: ");
+      endNode = keyboard.next();
       }
    }
 }
