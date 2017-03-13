@@ -11,11 +11,20 @@ public class Changlings {
    private static String endNode;
    private static Map<String, String> prevNodes;
 
-   public static void main (String[] args) throws FileNotFoundException{
+   public static void main (String[] args) throws FileNotFoundException, IOException, ClassNotFoundException{
       if (args.length != 3)
          throw new UnsupportedOperationException("\nThis program can only be run with 3 " +
-            "command-line args: a file location and two words.\nPlease run it again with new args");
-   
+            "command-line args: a file location and two words.\nPlease run it again with new args");  
+      
+      // deserialize graph from saved byte file, help from tutorialspoint
+      /*
+      FileInputStream fileIn = new FileInputStream("Graph3.ser");
+      ObjectInputStream in = new ObjectInputStream(fileIn);
+      graph = (Map<String, Set<String>>) in.readObject();
+      in.close();
+      fileIn.close();
+      */
+      
       // initialize class variables
       graph = new HashMap<>();
       startNode = args[1];
@@ -31,6 +40,14 @@ public class Changlings {
          putConnections(key, args[0]); 
       }
       input.close();
+      
+      // temp code to serialize grah after its finished being loaded
+      // used tutorialspoint serialization tutorial
+      FileOutputStream fileOut = new FileOutputStream("Graph3.ser"); 
+      ObjectOutputStream out = new ObjectOutputStream(fileOut);
+      out.writeObject(graph);
+      out.close();
+      fileOut.close();      
       
       // init all keys' values in prevNodes to "notVisited" except startNode   
       Set<String> allKeys = graph.keySet();
