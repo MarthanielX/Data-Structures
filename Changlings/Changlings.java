@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-// takes 3 command line args: a file location for a wordlist and 2 words
+// takes 3 command line args: the location of the serialized graph and 2 words
 // and prints the shortest path from the first to the second
 // where each step changes only 1 letter in the word
 public class Changlings {
@@ -17,7 +17,7 @@ public class Changlings {
             "command-line args: a file location and two words.\nPlease run it again with new args");  
       
       // Deserialize graph from saved byte file, help from tutorialspoint
-      FileInputStream fileIn = new FileInputStream("Graph.ser");
+      FileInputStream fileIn = new FileInputStream(args[0]);
       ObjectInputStream in = new ObjectInputStream(fileIn);
       graph = (Map<String, Set<String>>) in.readObject();
       in.close();
@@ -43,7 +43,7 @@ public class Changlings {
       }
       input.close();
       
-      // temp code to serialize grah after its finished being loaded
+      // temp code to serialize graph after its finished being loaded
       // used tutorialspoint serialization tutorial
       FileOutputStream fileOut = new FileOutputStream("Graph.ser"); 
       ObjectOutputStream out = new ObjectOutputStream(fileOut);
