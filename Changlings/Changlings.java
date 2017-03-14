@@ -16,45 +16,48 @@ public class Changlings {
          throw new UnsupportedOperationException("\nThis program can only be run with 3 " +
             "command-line args: a file location and two words.\nPlease run it again with new args");  
       
-      // deserialize graph from saved byte file, help from tutorialspoint
-      /*
-      FileInputStream fileIn = new FileInputStream("Graph3.ser");
+      // Deserialize graph from saved byte file, help from tutorialspoint
+      FileInputStream fileIn = new FileInputStream("Graph.ser");
       ObjectInputStream in = new ObjectInputStream(fileIn);
       graph = (Map<String, Set<String>>) in.readObject();
       in.close();
       fileIn.close();
-      */
-      
+     
       // initialize class variables
-      graph = new HashMap<>();
+      //graph = new HashMap<>();
       startNode = args[1];
       endNode = args[2];
       prevNodes = new HashMap<>();      
     
+      /*
       // for each word in the input file
       // checks all words in the file to see if they are connections
       // and puts a set of all connections into the map
-      Scanner input = new Scanner(new File(args[0]));      
+      Scanner input = new Scanner(new File(args[0]));
+      int count = 0;      
       while(input.hasNextLine()){
          String key = input.nextLine();
-         putConnections(key, args[0]); 
+         putConnections(key, args[0]);
+         count++;
+         if (count % 100 == 0) System.out.println(key + ": " + graph.get(key)); 
       }
       input.close();
       
       // temp code to serialize grah after its finished being loaded
       // used tutorialspoint serialization tutorial
-      FileOutputStream fileOut = new FileOutputStream("Graph3.ser"); 
+      FileOutputStream fileOut = new FileOutputStream("Graph.ser"); 
       ObjectOutputStream out = new ObjectOutputStream(fileOut);
       out.writeObject(graph);
       out.close();
-      fileOut.close();      
+      fileOut.close();    
+      */  
       
       // init all keys' values in prevNodes to "notVisited" except startNode   
       Set<String> allKeys = graph.keySet();
       for (String key : allKeys){
          prevNodes.put(key, "notVisited");
       }
-      prevNodes.replace(startNode, "starting node");
+      prevNodes.replace(startNode, "startingNode");
    
       BFS();      
       printSolution(); 
@@ -111,7 +114,7 @@ public class Changlings {
          // so it can print them out from first to last
          Stack<String> stack = new Stack<String>();
          String currentNode = endNode;
-         while (!prevNodes.get(currentNode).equals("starting node")){
+         while (!prevNodes.get(currentNode).equals("startingNode")){
             stack.push(currentNode);
             currentNode = prevNodes.get(currentNode);
          }
